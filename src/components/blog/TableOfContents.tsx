@@ -52,7 +52,7 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
 
   return (
     <nav className="text-sm">
-      <h4 className="font-medium text-gray-900 mb-4">目录</h4>
+      <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-4">目录</h4>
       <ul className="space-y-2">
         {items.map((item) => (
           <li
@@ -65,7 +65,7 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
               className={`block py-1 transition-colors duration-200 ${
                 activeId === item.id
                   ? "text-primary font-medium"
-                  : "text-gray-500 hover:text-gray-900"
+                  : "text-gray-500 hover:text-gray-900 dark:hover:text-gray-100"
               }`}
             >
               {item.text}
