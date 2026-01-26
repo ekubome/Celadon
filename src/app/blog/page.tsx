@@ -22,12 +22,14 @@ export default function BlogPage() {
   const popularPosts = getPopularPosts(5);
   const categoriesWithCount = getCategoriesWithCount();
   const tagsWithCount = getTagsWithCount();
-  const featuredPosts = getFeaturedPosts(1);
-  const heroPost = featuredPosts[0];
+  const featuredPosts = getFeaturedPosts(3); // 最多3个精选文章
+
+  // 获取所有精选文章的 slug，用于过滤
+  const featuredSlugs = new Set(featuredPosts.map((p) => p.slug));
 
   // 过滤掉已在 Hero 区域显示的精选文章，避免重复
-  const postsWithoutHero = heroPost
-    ? posts.filter((p) => p.slug !== heroPost.slug)
+  const postsWithoutHero = featuredPosts.length > 0
+    ? posts.filter((p) => !featuredSlugs.has(p.slug))
     : posts;
 
   return (
@@ -35,8 +37,8 @@ export default function BlogPage() {
       {/* Hero Section with Featured Post */}
       <section className="pt-12 pb-8 px-6">
         <div className="max-w-6xl mx-auto">
-          {heroPost ? (
-            <FeaturedHero post={heroPost} />
+          {featuredPosts.length > 0 ? (
+            <FeaturedHero posts={featuredPosts} />
           ) : (
             <div>
               <span className="text-sm text-primary font-medium tracking-wide uppercase mb-4 block">
