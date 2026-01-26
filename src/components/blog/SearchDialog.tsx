@@ -146,10 +146,10 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
             transition={{ duration: 0.2 }}
             className="fixed left-1/2 top-[15%] z-50 w-full max-w-xl -translate-x-1/2 px-4"
           >
-            <div className="overflow-hidden rounded-2xl bg-white shadow-2xl">
+            <div className="overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-2xl">
               {/* Search Input */}
-              <div className="flex items-center gap-3 border-b border-gray-100 px-4">
-                <Search className="h-5 w-5 text-gray-400" />
+              <div className="flex items-center gap-3 border-b border-gray-100 dark:border-gray-700 px-4">
+                <Search className="h-5 w-5 text-gray-400 dark:text-gray-500" />
                 <input
                   ref={inputRef}
                   type="text"
@@ -157,15 +157,15 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="搜索文章..."
-                  className="flex-1 py-4 text-base text-gray-900 placeholder-gray-400 outline-none"
+                  className="flex-1 py-4 text-base text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 bg-transparent outline-none"
                 />
                 <div className="flex items-center gap-1.5">
-                  <kbd className="hidden sm:inline-flex items-center gap-1 rounded bg-gray-100 px-2 py-1 text-xs text-gray-500">
+                  <kbd className="hidden sm:inline-flex items-center gap-1 rounded bg-gray-100 dark:bg-gray-700 px-2 py-1 text-xs text-gray-500 dark:text-gray-400">
                     <Command className="h-3 w-3" />K
                   </kbd>
                   <button
                     onClick={onClose}
-                    className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
+                    className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -180,8 +180,8 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
                   </div>
                 ) : query && results.length === 0 ? (
                   <div className="py-12 text-center">
-                    <p className="text-gray-500">没有找到相关文章</p>
-                    <p className="mt-1 text-sm text-gray-400">
+                    <p className="text-gray-500 dark:text-gray-400">没有找到相关文章</p>
+                    <p className="mt-1 text-sm text-gray-400 dark:text-gray-500">
                       尝试使用不同的关键词
                     </p>
                   </div>
@@ -194,8 +194,8 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
                           onMouseEnter={() => setSelectedIndex(index)}
                           className={`w-full px-4 py-3 text-left transition-colors ${
                             index === selectedIndex
-                              ? "bg-primary/5"
-                              : "hover:bg-gray-50"
+                              ? "bg-primary/5 dark:bg-primary/10"
+                              : "hover:bg-gray-50 dark:hover:bg-gray-700/50"
                           }`}
                         >
                           <div className="flex items-start gap-3">
@@ -203,7 +203,7 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
                               className={`mt-0.5 rounded-lg p-2 ${
                                 index === selectedIndex
                                   ? "bg-primary/10 text-primary"
-                                  : "bg-gray-100 text-gray-500"
+                                  : "bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400"
                               }`}
                             >
                               <FileText className="h-4 w-4" />
@@ -213,15 +213,15 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
                                 className={`font-medium truncate ${
                                   index === selectedIndex
                                     ? "text-primary"
-                                    : "text-gray-900"
+                                    : "text-gray-900 dark:text-gray-100"
                                 }`}
                               >
                                 {result.title}
                               </h4>
-                              <p className="mt-0.5 text-sm text-gray-500 line-clamp-1">
+                              <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-400 line-clamp-1">
                                 {result.excerpt}
                               </p>
-                              <div className="mt-2 flex items-center gap-3 text-xs text-gray-400">
+                              <div className="mt-2 flex items-center gap-3 text-xs text-gray-400 dark:text-gray-500">
                                 <span className="flex items-center gap-1">
                                   <Folder className="h-3 w-3" />
                                   {result.category}
@@ -241,27 +241,27 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
                   </ul>
                 ) : (
                   <div className="py-8 text-center">
-                    <p className="text-sm text-gray-400">输入关键词开始搜索</p>
+                    <p className="text-sm text-gray-400 dark:text-gray-500">输入关键词开始搜索</p>
                   </div>
                 )}
               </div>
 
               {/* Footer */}
-              <div className="border-t border-gray-100 px-4 py-3">
-                <div className="flex items-center justify-between text-xs text-gray-400">
+              <div className="border-t border-gray-100 dark:border-gray-700 px-4 py-3">
+                <div className="flex items-center justify-between text-xs text-gray-400 dark:text-gray-500">
                   <div className="flex items-center gap-4">
                     <span className="flex items-center gap-1">
-                      <kbd className="rounded bg-gray-100 px-1.5 py-0.5">↑</kbd>
-                      <kbd className="rounded bg-gray-100 px-1.5 py-0.5">↓</kbd>
+                      <kbd className="rounded bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5">↑</kbd>
+                      <kbd className="rounded bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5">↓</kbd>
                       导航
                     </span>
                     <span className="flex items-center gap-1">
-                      <kbd className="rounded bg-gray-100 px-1.5 py-0.5">↵</kbd>
+                      <kbd className="rounded bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5">↵</kbd>
                       打开
                     </span>
                   </div>
                   <span className="flex items-center gap-1">
-                    <kbd className="rounded bg-gray-100 px-1.5 py-0.5">Esc</kbd>
+                    <kbd className="rounded bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5">Esc</kbd>
                     关闭
                   </span>
                 </div>

@@ -23,10 +23,10 @@ export default function TagCloud({ tags, maxTags = 15 }: TagCloudProps) {
   };
 
   return (
-    <div className="p-6 rounded-2xl bg-white border border-gray-100">
+    <div className="p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
       <div className="flex items-center gap-2 mb-4">
         <Tags className="w-4 h-4 text-primary" />
-        <h3 className="font-semibold text-gray-900">标签</h3>
+        <h3 className="font-semibold text-gray-900 dark:text-gray-100">标签</h3>
       </div>
 
       <div className="flex flex-wrap gap-2">
@@ -34,7 +34,7 @@ export default function TagCloud({ tags, maxTags = 15 }: TagCloudProps) {
           <Link
             key={tag}
             href={`/blog/tag/${encodeURIComponent(tag)}`}
-            className={`px-3 py-1.5 rounded-full bg-gray-50 text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors ${getFontSize(
+            className={`px-3 py-1.5 rounded-full bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-primary/10 hover:text-primary transition-colors ${getFontSize(
               count
             )}`}
             title={`${count} 篇文章`}

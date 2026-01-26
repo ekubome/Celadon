@@ -13,10 +13,10 @@ export default function CategoryNav({
   if (categories.length === 0) return null;
 
   return (
-    <div className="p-6 rounded-2xl bg-white border border-gray-100">
+    <div className="p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
       <div className="flex items-center gap-2 mb-4">
         <FolderOpen className="w-4 h-4 text-primary" />
-        <h3 className="font-semibold text-gray-900">分类</h3>
+        <h3 className="font-semibold text-gray-900 dark:text-gray-100">分类</h3>
       </div>
 
       <div className="space-y-1">
@@ -29,7 +29,7 @@ export default function CategoryNav({
               className={`flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${
                 isActive
                   ? "bg-primary/10 text-primary font-medium"
-                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                  : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100"
               }`}
             >
               <span>{category}</span>

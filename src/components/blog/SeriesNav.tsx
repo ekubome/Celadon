@@ -18,10 +18,10 @@ export default function SeriesNav({
   const currentIndex = posts.findIndex((p) => p.slug === currentSlug);
 
   return (
-    <div className="p-5 rounded-xl bg-gray-50 border border-gray-100">
+    <div className="p-5 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
       <div className="flex items-center gap-2 mb-4">
         <BookOpen className="w-4 h-4 text-primary" />
-        <h3 className="font-semibold text-gray-900 text-sm">系列文章</h3>
+        <h3 className="font-semibold text-gray-900 dark:text-gray-100 text-sm">系列文章</h3>
       </div>
 
       <Link
@@ -43,7 +43,7 @@ export default function SeriesNav({
               className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
                 isCurrent
                   ? "bg-primary/10 text-primary font-medium"
-                  : "text-gray-600 hover:bg-gray-100"
+                  : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
               }`}
             >
               {/* Status Icon */}
@@ -52,8 +52,8 @@ export default function SeriesNav({
                   isCurrent
                     ? "bg-primary text-white"
                     : isCompleted
-                    ? "bg-green-100 text-green-600"
-                    : "bg-gray-200 text-gray-500"
+                    ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
+                    : "bg-gray-200 dark:bg-gray-600 text-gray-500 dark:text-gray-400"
                 }`}
               >
                 {isCompleted ? (
@@ -76,14 +76,14 @@ export default function SeriesNav({
       </div>
 
       {/* Progress */}
-      <div className="mt-4 pt-4 border-t border-gray-200">
-        <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
+      <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
+        <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-2">
           <span>阅读进度</span>
           <span>
             {currentIndex + 1} / {posts.length}
           </span>
         </div>
-        <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+        <div className="h-1.5 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
           <div
             className="h-full bg-primary rounded-full transition-all duration-300"
             style={{

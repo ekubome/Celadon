@@ -52,13 +52,13 @@ export default function Pagination({
       {currentPage > 1 ? (
         <Link
           href={getPageUrl(currentPage - 1)}
-          className="flex items-center gap-1 px-4 py-2 text-sm text-gray-600 hover:text-primary transition-colors"
+          className="flex items-center gap-1 px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
         >
           <ChevronLeft className="w-4 h-4" />
           上一页
         </Link>
       ) : (
-        <span className="flex items-center gap-1 px-4 py-2 text-sm text-gray-300 cursor-not-allowed">
+        <span className="flex items-center gap-1 px-4 py-2 text-sm text-gray-300 dark:text-gray-600 cursor-not-allowed">
           <ChevronLeft className="w-4 h-4" />
           上一页
         </span>
@@ -70,7 +70,7 @@ export default function Pagination({
           page === "..." ? (
             <span
               key={`ellipsis-${index}`}
-              className="w-10 h-10 flex items-center justify-center text-gray-400"
+              className="w-10 h-10 flex items-center justify-center text-gray-400 dark:text-gray-500"
             >
               ...
             </span>
@@ -80,8 +80,8 @@ export default function Pagination({
               href={getPageUrl(page)}
               className={`w-10 h-10 flex items-center justify-center rounded-full text-sm font-medium transition-all duration-200 ${
                 currentPage === page
-                  ? "bg-gray-900 text-white"
-                  : "text-gray-600 hover:bg-gray-100"
+                  ? "bg-gray-900 dark:bg-white text-white dark:text-gray-900"
+                  : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
               }`}
             >
               {page}
@@ -94,13 +94,13 @@ export default function Pagination({
       {currentPage < totalPages ? (
         <Link
           href={getPageUrl(currentPage + 1)}
-          className="flex items-center gap-1 px-4 py-2 text-sm text-gray-600 hover:text-primary transition-colors"
+          className="flex items-center gap-1 px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
         >
           下一页
           <ChevronRight className="w-4 h-4" />
         </Link>
       ) : (
-        <span className="flex items-center gap-1 px-4 py-2 text-sm text-gray-300 cursor-not-allowed">
+        <span className="flex items-center gap-1 px-4 py-2 text-sm text-gray-300 dark:text-gray-600 cursor-not-allowed">
           下一页
           <ChevronRight className="w-4 h-4" />
         </span>
