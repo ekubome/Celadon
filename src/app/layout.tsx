@@ -12,8 +12,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | 简约优雅的个人空间",
-  description: "一个简洁、优雅、独特的个人网站，展示作品与思考。",
+  title: "Celadon | 个人博客",
+  description: "一个简洁、优雅、独特的个人博客，分享技术与思考。",
+  alternates: {
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
+  },
 };
 
 export default function RootLayout({

@@ -4,20 +4,21 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 
 const navLinks = [
   { name: "首页", href: "/" },
-  { name: "关于", href: "/about" },
-  { name: "作品", href: "/works" },
   { name: "博客", href: "/blog" },
-  { name: "联系", href: "/contact" },
+  { name: "关于", href: "/about" },
 ];
+
+import { SearchDialog } from "@/components/blog/SearchDialog";
 
 export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const tickingRef = useRef(false);
 
   useEffect(() => {
@@ -86,9 +87,16 @@ export function Navbar() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="p-2.5 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
+              aria-label="搜索"
+            >
+              <Search size={18} />
+            </button>
             <Link
-              href="/contact"
+              href="/about#contact"
               className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-gray-900 rounded-full hover:bg-gray-800 transition-all duration-300 hover:shadow-lg hover:shadow-gray-900/20 hover:-translate-y-0.5"
             >
               联系我
@@ -96,13 +104,22 @@ export function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          <div className="flex md:hidden items-center gap-2">
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="p-2 text-gray-600 hover:text-gray-900 transition-colors"
+              aria-label="搜索"
+            >
+              <Search size={20} />
+            </button>
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="p-2 text-gray-600 hover:text-gray-900 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </nav>
       </motion.header>
 
@@ -161,7 +178,7 @@ export function Navbar() {
                   className="mt-8"
                 >
                   <Link
-                    href="/contact"
+                    href="/about#contact"
                     className="block w-full py-3 text-center text-white bg-gray-900 rounded-full font-medium"
                   >
                     联系我
@@ -172,6 +189,9 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Search Dialog */}
+      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

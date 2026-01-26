@@ -3,14 +3,13 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Github, Twitter, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Twitter, Linkedin, Mail, ArrowUpRight, Rss } from "lucide-react";
 
 const footerLinks = [
   { name: "首页", href: "/" },
-  { name: "关于", href: "/about" },
-  { name: "作品", href: "/works" },
   { name: "博客", href: "/blog" },
-  { name: "联系", href: "/contact" },
+  { name: "归档", href: "/blog/archive" },
+  { name: "关于", href: "/about" },
 ];
 
 const socialLinks = [
@@ -18,6 +17,7 @@ const socialLinks = [
   { name: "Twitter", icon: <Twitter className="w-4 h-4" />, href: "#" },
   { name: "LinkedIn", icon: <Linkedin className="w-4 h-4" />, href: "#" },
   { name: "Email", icon: <Mail className="w-4 h-4" />, href: "mailto:hello@example.com" },
+  { name: "RSS", icon: <Rss className="w-4 h-4" />, href: "/feed.xml" },
 ];
 
 export function Footer() {
