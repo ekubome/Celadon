@@ -41,18 +41,18 @@ export default function Sidebar({
 
       {/* RSS Subscribe */}
       {showRss && (
-        <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/10">
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 shadow-sm shadow-primary/10">
           <div className="flex items-center gap-2 mb-3">
             <Rss className="w-4 h-4 text-primary" />
-            <h3 className="font-semibold text-gray-900">订阅更新</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-gray-100">订阅更新</h3>
           </div>
-          <p className="text-sm text-gray-600 mb-4">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
             通过 RSS 订阅，第一时间获取最新文章。
           </p>
           <Link
             href="/feed.xml"
             target="_blank"
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary bg-white rounded-full hover:bg-primary hover:text-white transition-colors border border-primary/20"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary bg-white dark:bg-gray-800 rounded-full hover:bg-primary hover:text-white transition-colors border border-primary/20"
           >
             <Rss className="w-4 h-4" />
             订阅 RSS

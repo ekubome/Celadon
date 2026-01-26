@@ -23,7 +23,7 @@ export default function TagCloud({ tags, maxTags = 15 }: TagCloudProps) {
   };
 
   return (
-    <div className="p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div className="p-6 rounded-2xl bg-white/90 dark:bg-gray-800/90 border border-gray-200/80 dark:border-gray-700 shadow-sm shadow-gray-200/60 dark:shadow-gray-900/20">
       <div className="flex items-center gap-2 mb-4">
         <Tags className="w-4 h-4 text-primary" />
         <h3 className="font-semibold text-gray-900 dark:text-gray-100">标签</h3>

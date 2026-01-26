@@ -10,7 +10,7 @@ interface PostCardFeaturedProps {
 export default function PostCardFeatured({ post }: PostCardFeaturedProps) {
   return (
     <Link href={`/blog/${post.slug}`} className="group">
-      <article className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-800/50 border border-gray-100 dark:border-gray-700 hover:border-gray-200 dark:hover:border-gray-600 hover:shadow-xl hover:shadow-gray-100/50 dark:hover:shadow-gray-900/50 transition-all duration-300">
+      <article className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-gray-50/80 to-white/90 dark:from-gray-800 dark:to-gray-800/80 border border-gray-200/80 dark:border-gray-700 shadow-sm shadow-gray-200/50 dark:shadow-gray-900/20 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-lg hover:shadow-gray-200/80 dark:hover:shadow-gray-900/40 transition-all duration-300">
         {/* Cover Image */}
         {post.coverImage && (
           <div className="relative aspect-[2/1] w-full overflow-hidden rounded-xl mb-6 bg-gray-100 dark:bg-gray-700">

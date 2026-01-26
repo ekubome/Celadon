@@ -18,7 +18,7 @@ export default function SeriesNav({
   const currentIndex = posts.findIndex((p) => p.slug === currentSlug);
 
   return (
-    <div className="p-5 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div className="p-5 rounded-xl bg-gray-50/80 dark:bg-gray-800/90 border border-gray-200/70 dark:border-gray-700 shadow-sm shadow-gray-200/50 dark:shadow-gray-900/20">
       <div className="flex items-center gap-2 mb-4">
         <BookOpen className="w-4 h-4 text-primary" />
         <h3 className="font-semibold text-gray-900 dark:text-gray-100 text-sm">系列文章</h3>

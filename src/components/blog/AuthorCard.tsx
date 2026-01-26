@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/config";
 
 export default function AuthorCard() {
   return (
-    <div className="p-6 rounded-2xl bg-white border border-gray-100">
+    <div className="p-6 rounded-2xl bg-white/90 dark:bg-gray-800/90 border border-gray-200/80 dark:border-gray-700 shadow-sm shadow-gray-200/60 dark:shadow-gray-900/20">
       <div className="flex flex-col items-center text-center">
         {/* Avatar */}
         <div className="relative w-20 h-20 mb-4">
@@ -26,12 +26,12 @@ export default function AuthorCard() {
         </div>
 
         {/* Name */}
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
           {siteConfig.author.name}
         </h3>
 
         {/* Bio */}
-        <p className="text-sm text-gray-500 mb-4 leading-relaxed">
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">
           {siteConfig.author.bio || siteConfig.description}
         </p>
 
@@ -42,7 +42,7 @@ export default function AuthorCard() {
               href={siteConfig.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+              className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
               aria-label="GitHub"
             >
               <Github className="w-4 h-4" />
@@ -53,7 +53,7 @@ export default function AuthorCard() {
               href={siteConfig.links.twitter}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+              className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
               aria-label="Twitter"
             >
               <Twitter className="w-4 h-4" />
@@ -64,7 +64,7 @@ export default function AuthorCard() {
               href={siteConfig.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+              className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-4 h-4" />
@@ -73,7 +73,7 @@ export default function AuthorCard() {
           {siteConfig.author.email && (
             <Link
               href={`mailto:${siteConfig.author.email}`}
-              className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+              className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
               aria-label="Email"
             >
               <Mail className="w-4 h-4" />

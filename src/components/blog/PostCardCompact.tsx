@@ -10,7 +10,7 @@ interface PostCardCompactProps {
 export default function PostCardCompact({ post }: PostCardCompactProps) {
   return (
     <Link href={`/blog/${post.slug}`} className="group block">
-      <article className="p-6 md:p-8 rounded-2xl bg-white dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700 hover:border-gray-200 dark:hover:border-gray-600 hover:shadow-lg hover:shadow-gray-100/50 dark:hover:shadow-gray-900/50 transition-all duration-300">
+      <article className="p-6 md:p-8 rounded-2xl bg-white/90 dark:bg-gray-800/80 border border-gray-200/70 dark:border-gray-700 shadow-sm shadow-gray-200/50 dark:shadow-gray-900/20 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md hover:shadow-gray-200/80 dark:hover:shadow-gray-900/40 transition-all duration-300">
         <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
           {/* Cover Image - Small thumbnail */}
           {post.coverImage && (
