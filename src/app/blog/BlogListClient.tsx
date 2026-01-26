@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { PostMeta } from "@/lib/posts";
 import { PostCard } from "@/components/blog";
@@ -22,11 +22,15 @@ export default function BlogListClient({
   const allCategories = ["全部", ...categories];
 
   const filteredPosts = useMemo(() => {
-    setCurrentPage(1); // Reset page when filter changes
     return activeCategory === "全部"
       ? posts
       : posts.filter((p) => p.category === activeCategory);
   }, [activeCategory, posts]);
+
+  // Reset page when filter changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory]);
 
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
   const paginatedPosts = filteredPosts.slice(

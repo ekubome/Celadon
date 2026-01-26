@@ -239,7 +239,11 @@ export function getAllSeries(): SeriesInfo[] {
 // Get a specific series by name
 export function getSeriesByName(name: string): SeriesInfo | null {
   const series = getAllSeries()
-  return series.find((s) => s.name === name || s.slug === name) || null
+  const lowerName = name.toLowerCase()
+  return series.find((s) =>
+    s.name.toLowerCase() === lowerName ||
+    s.slug.toLowerCase() === lowerName
+  ) || null
 }
 
 // Get posts in the same series
@@ -260,9 +264,11 @@ export function getAdjacentPosts(currentSlug: string): {
     return { prev: null, next: null }
   }
 
+  // Posts are sorted by date descending (newest first at index 0)
+  // prev = newer post (lower index), next = older post (higher index)
   return {
-    prev: currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null,
-    next: currentIndex > 0 ? posts[currentIndex - 1] : null,
+    prev: currentIndex > 0 ? posts[currentIndex - 1] : null,
+    next: currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null,
   }
 }
 

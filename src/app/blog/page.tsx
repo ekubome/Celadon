@@ -25,6 +25,11 @@ export default function BlogPage() {
   const featuredPosts = getFeaturedPosts(1);
   const heroPost = featuredPosts[0];
 
+  // 过滤掉已在 Hero 区域显示的精选文章，避免重复
+  const postsWithoutHero = heroPost
+    ? posts.filter((p) => p.slug !== heroPost.slug)
+    : posts;
+
   return (
     <div className="min-h-screen">
       {/* Hero Section with Featured Post */}
@@ -54,7 +59,7 @@ export default function BlogPage() {
           <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-12">
             {/* Posts List */}
             <div>
-              <BlogListClient posts={posts} categories={categories} />
+              <BlogListClient posts={postsWithoutHero} categories={categories} />
             </div>
 
             {/* Sidebar - Hidden on mobile, shown on desktop */}
