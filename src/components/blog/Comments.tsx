@@ -87,12 +87,12 @@ export default function Comments({ slug }: CommentsProps) {
   // Show placeholder if Giscus is not configured
   if (!siteConfig.comments.giscus.repoId) {
     return (
-      <div className="py-12 border-t border-gray-100">
+      <div className="py-12 border-t border-gray-100 dark:border-gray-800">
         <div className="text-center">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">评论</h3>
-          <p className="text-gray-500 text-sm">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">评论</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">
             评论系统尚未配置。请在{" "}
-            <code className="px-1.5 py-0.5 bg-gray-100 rounded text-xs">
+            <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">
               src/lib/config.ts
             </code>{" "}
             中配置 Giscus。
@@ -111,8 +111,8 @@ export default function Comments({ slug }: CommentsProps) {
   }
 
   return (
-    <div className="py-12 border-t border-gray-100">
-      <h3 className="text-lg font-semibold text-gray-900 mb-6">评论</h3>
+    <div className="py-12 border-t border-gray-100 dark:border-gray-800">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-6">评论</h3>
       <div ref={containerRef} className="giscus" />
     </div>
   );

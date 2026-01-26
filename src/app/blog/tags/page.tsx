@@ -25,8 +25,9 @@ export default function TagsPage() {
   const sortedTags = tags.sort((a, b) => tagCounts[b] - tagCounts[a]);
 
   // Calculate font size based on count
-  const maxCount = Math.max(...Object.values(tagCounts));
-  const minCount = Math.min(...Object.values(tagCounts));
+  const counts = Object.values(tagCounts);
+  const maxCount = counts.length > 0 ? Math.max(...counts) : 0;
+  const minCount = counts.length > 0 ? Math.min(...counts) : 0;
 
   const getTagSize = (count: number) => {
     if (maxCount === minCount) return "text-base";
@@ -61,13 +62,13 @@ export default function TagsPage() {
               <p className="text-gray-500">暂无标签</p>
             </div>
           ) : (
-            <div className="p-8 rounded-2xl bg-white border border-gray-100">
+            <div className="p-8 rounded-2xl bg-white dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700">
               <div className="flex flex-wrap items-center justify-center gap-4">
                 {sortedTags.map((tag) => (
                   <Link
                     key={tag}
                     href={`/blog/tag/${encodeURIComponent(tag)}`}
-                    className={`group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 hover:bg-primary/10 text-gray-600 hover:text-primary transition-all duration-300 ${getTagSize(
+                    className={`group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 dark:bg-gray-700/50 hover:bg-primary/10 dark:hover:bg-primary/20 text-gray-600 dark:text-gray-300 hover:text-primary transition-all duration-300 ${getTagSize(
                       tagCounts[tag]
                     )}`}
                   >
@@ -84,7 +85,7 @@ export default function TagsPage() {
 
           {/* Tags List */}
           <div className="mt-12">
-            <h2 className="text-lg font-semibold text-gray-900 mb-6">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-6">
               所有标签
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -92,13 +93,13 @@ export default function TagsPage() {
                 <Link
                   key={tag}
                   href={`/blog/tag/${encodeURIComponent(tag)}`}
-                  className="group flex items-center justify-between p-4 rounded-xl bg-white border border-gray-100 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                  className="group flex items-center justify-between p-4 rounded-xl bg-white dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700 hover:border-primary/30 dark:hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                       <Tag className="w-4 h-4" />
                     </div>
-                    <span className="font-medium text-gray-700 group-hover:text-primary transition-colors">
+                    <span className="font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors">
                       {tag}
                     </span>
                   </div>
