@@ -67,6 +67,7 @@ const config: Config = {
                 'float': 'float 6s ease-in-out infinite',
                 'shimmer': 'shimmer 3s ease-in-out infinite',
                 'fade-in': 'fade-in 0.6s ease-out forwards',
+                'progress': 'progress 5s linear',
             },
             keyframes: {
                 float: {
@@ -80,6 +81,10 @@ const config: Config = {
                 'fade-in': {
                     from: { opacity: '0', transform: 'translateY(10px)' },
                     to: { opacity: '1', transform: 'translateY(0)' },
+                },
+                'progress': {
+                    from: { width: '0%' },
+                    to: { width: '100%' },
                 },
             },
         }
