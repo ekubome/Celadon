@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
@@ -73,10 +73,13 @@ const posts = [
 export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState("全部");
 
-  const filteredPosts =
-    activeCategory === "全部"
-      ? posts
-      : posts.filter((p) => p.category === activeCategory);
+  const filteredPosts = useMemo(
+    () =>
+      activeCategory === "全部"
+        ? posts
+        : posts.filter((p) => p.category === activeCategory),
+    [activeCategory]
+  );
 
   const featuredPosts = posts.filter((p) => p.featured);
 

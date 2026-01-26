@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -61,10 +61,13 @@ const projects = [
 export default function WorksPage() {
   const [activeCategory, setActiveCategory] = useState("全部");
 
-  const filteredProjects =
-    activeCategory === "全部"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
+  const filteredProjects = useMemo(
+    () =>
+      activeCategory === "全部"
+        ? projects
+        : projects.filter((p) => p.category === activeCategory),
+    [activeCategory]
+  );
 
   return (
     <div className="min-h-screen">
@@ -119,7 +122,7 @@ export default function WorksPage() {
       <section className="pb-32 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <AnimatePresence mode="popLayout">
+            <AnimatePresence mode="wait">
               {filteredProjects.map((project, index) => (
                 <motion.div
                   key={project.id}

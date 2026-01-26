@@ -33,21 +33,21 @@ export default function RootLayout({
           <div className="absolute inset-0 bg-grid-small opacity-40" />
 
           {/* 主色调光晕 - 右上角 */}
-          <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary/8 blur-[120px]" />
+          <div className="absolute -top-40 -right-40 w-[400px] h-[400px] rounded-full bg-primary/8 blur-[80px]" />
 
           {/* 银色光晕 - 左下角 */}
-          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-gray-300/20 blur-[100px]" />
+          <div className="absolute -bottom-40 -left-40 w-[350px] h-[350px] rounded-full bg-gray-300/20 blur-[70px]" />
 
           {/* 中央微弱光晕 */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/3 blur-[150px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/3 blur-[100px]" />
         </div>
 
         <Navbar />
-        <PageTransition>
-          <main className="min-h-screen pt-20">
+        <main className="min-h-screen pt-20">
+          <PageTransition>
             {children}
-          </main>
-        </PageTransition>
+          </PageTransition>
+        </main>
         <Footer />
       </body>
     </html>

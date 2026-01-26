@@ -68,25 +68,6 @@
     @apply backdrop-blur-xl bg-white/60 border border-white/40 shadow-lg shadow-black/[0.03];
   }
 
-  .glass-subtle {
-    @apply backdrop-blur-md bg-white/40 border border-white/30;
-  }
-
-  .glass-card {
-    @apply backdrop-blur-xl bg-white/70 border border-gray-200/50 shadow-xl shadow-gray-200/20;
-  }
-
-  /* 银色光泽边框 */
-  .border-silver {
-    border-color: hsl(var(--silver));
-  }
-
-  .border-silver-shine {
-    @apply border border-transparent;
-    background: linear-gradient(white, white) padding-box,
-                linear-gradient(135deg, #e8e8e8 0%, #f8f8f8 25%, #d0d0d0 50%, #f0f0f0 75%, #e0e0e0 100%) border-box;
-  }
-
   /* 文字平衡 */
   .text-balance {
     text-wrap: balance;
@@ -106,36 +87,7 @@
     @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg;
   }
 
-  .hover-glow {
-    @apply transition-all duration-300;
-  }
-
-  .hover-glow:hover {
-    box-shadow: 0 0 30px -5px hsl(var(--primary) / 0.3);
-  }
-
-  /* 流畅的下划线动画 */
-  .link-underline {
-    @apply relative;
-  }
-
-  .link-underline::after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-0 h-[1px] bg-current transition-all duration-300 ease-out;
-  }
-
-  .link-underline:hover::after {
-    @apply w-full;
-  }
-
   /* 网格背景 */
-  .bg-grid {
-    background-image:
-      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
-    background-size: 48px 48px;
-  }
-
   .bg-grid-small {
     background-image:
       linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
@@ -191,6 +143,11 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
 @layer utilities {
   .animate-float {
     animation: float 6s ease-in-out infinite;
@@ -202,6 +159,10 @@
   }
 
   .animate-fade-in {
-    animation: fade-in 0.6s ease-out forwards;
+    animation: fade-in 0.3s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.3s ease-out forwards;
   }
 }

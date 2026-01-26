@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -18,12 +18,19 @@ export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const tickingRef = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (!tickingRef.current) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 20);
+          tickingRef.current = false;
+        });
+        tickingRef.current = true;
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -66,26 +73,13 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="relative px-4 py-2 text-sm font-medium transition-colors"
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors ${
+                    isActive
+                      ? "text-primary bg-primary/8 rounded-full"
+                      : "text-gray-500 hover:text-gray-800"
+                  }`}
                 >
-                  <span
-                    className={`relative z-10 ${
-                      isActive ? "text-primary" : "text-gray-500 hover:text-gray-800"
-                    }`}
-                  >
-                    {link.name}
-                  </span>
-                  {isActive && (
-                    <motion.div
-                      layoutId="navbar-indicator"
-                      className="absolute inset-0 bg-primary/8 rounded-full"
-                      transition={{
-                        type: "spring",
-                        stiffness: 350,
-                        damping: 30,
-                      }}
-                    />
-                  )}
+                  {link.name}
                 </Link>
               );
             })}

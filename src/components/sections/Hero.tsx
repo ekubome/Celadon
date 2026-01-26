@@ -36,7 +36,7 @@ export function Hero() {
         <div className="absolute bottom-20 left-[8%] grid grid-cols-3 gap-2 opacity-30">
           {[...Array(9)].map((_, i) => (
             <motion.div
-              key={i}
+              key={`dot-${i}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 + i * 0.05 }}

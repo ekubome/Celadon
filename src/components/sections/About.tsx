@@ -49,7 +49,7 @@ export function About() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {skills.map((skill, index) => (
                         <motion.div
-                            key={index}
+                            key={skill.title}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
