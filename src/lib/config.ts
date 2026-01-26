@@ -1,7 +1,7 @@
 export const siteConfig = {
-  name: 'Celadon',
+  name: 'ekubo',
   description: '专注于创造简约优雅的数字体验，用设计和代码构建有温度的产品。',
-  url: 'https://wkubo.me', // Update this with your actual domain
+  url: 'https://ekubo.me', // Update this with your actual domain
   author: {
     name: 'ekubo',
     email: 'ekubome@163.com',
@@ -19,10 +19,10 @@ export const siteConfig = {
     enabled: true,
     provider: 'giscus' as const,
     giscus: {
-      repo: 'your-username/your-repo', // Replace with your GitHub repo
-      repoId: '', // Get from https://giscus.app/
+      repo: 'ekubome/Celadon', // Replace with your GitHub repo
+      repoId: 'R_kgDORBZQ7w', // Get from https://giscus.app/
       category: 'Announcements',
-      categoryId: '', // Get from https://giscus.app/
+      categoryId: 'DIC_kwDORBZQ784C1cDH', // Get from https://giscus.app/
       mapping: 'pathname' as const,
       reactionsEnabled: true,
       emitMetadata: false,
