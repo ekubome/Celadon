@@ -32,7 +32,7 @@ function generateSearchIndex() {
         date: data.date || new Date().toISOString().split('T')[0],
       };
     })
-    .sort((a, b) => (a.date > b.date ? -1 : 1));
+    .sort((a, b) => (a.date > b.date ? -1 : a.date < b.date ? 1 : 0));
 
   // Ensure public directory exists
   const publicDir = path.dirname(outputPath);

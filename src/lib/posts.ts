@@ -112,14 +112,14 @@ export function getPostBySlug(slug: string): Post | null {
     date: data.date || new Date().toISOString().split('T')[0],
     excerpt: data.excerpt || '',
     category: data.category || '未分类',
-    tags: data.tags || [],
+    tags: Array.isArray(data.tags) ? data.tags : [],
     featured: data.featured || false,
     readingTime: Math.ceil(stats.minutes),
     content,
     // New fields
     draft: data.draft || false,
     series: data.series || undefined,
-    seriesOrder: data.seriesOrder || undefined,
+    seriesOrder: typeof data.seriesOrder === 'number' ? data.seriesOrder : undefined,
     coverImage: data.coverImage || undefined,
     lastModified: data.lastModified || undefined,
   }
@@ -187,7 +187,7 @@ export function getRelatedPosts(
   // Score posts by relevance (same category or shared tags)
   const scoredPosts = allPosts.map((post) => {
     let score = 0
-    if (post.category === currentPost.category) {
+    if (post.category.toLowerCase() === currentPost.category.toLowerCase()) {
       score += 2
     }
     const sharedTags = post.tags.filter((tag) =>

@@ -5,7 +5,7 @@ export const siteConfig = {
   author: {
     name: 'ekubo',
     email: 'ekubome@163.com',
-    bio: '一个热爱技术与设计的开发者，专注于创造简约优雅的数字体验。',
+    bio: '一个热爱技术与设计的开发者。',
     avatar: '/images/avatar.jpg',
   },
   links: {
