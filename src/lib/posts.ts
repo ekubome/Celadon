@@ -73,7 +73,11 @@ function loadAllPostsFromDisk(): Post[] {
     })
     .map((folder) => getPostBySlug(folder))
     .filter((post): post is Post => post !== null)
-    .sort((a, b) => (a.date > b.date ? -1 : 1))
+    .sort((a, b) => {
+      if (a.date > b.date) return -1;
+      if (a.date < b.date) return 1;
+      return 0;
+    })
 }
 
 function getCachedPosts(): Post[] {
@@ -187,7 +191,7 @@ export function getRelatedPosts(
       score += 2
     }
     const sharedTags = post.tags.filter((tag) =>
-      currentPost.tags.includes(tag)
+      currentPost.tags.some((t) => t.toLowerCase() === tag.toLowerCase())
     ).length
     score += sharedTags
 
@@ -223,7 +227,9 @@ export function getAllSeries(): SeriesInfo[] {
       }
       if (a.seriesOrder !== undefined) return -1
       if (b.seriesOrder !== undefined) return 1
-      return a.date > b.date ? 1 : -1
+      if (a.date > b.date) return -1;
+      if (a.date < b.date) return 1;
+      return 0;
     })
 
     series.push({
@@ -280,7 +286,9 @@ export function getPopularPosts(limit: number = 5): PostMeta[] {
     .sort((a, b) => {
       if (a.featured && !b.featured) return -1
       if (!a.featured && b.featured) return 1
-      return a.date > b.date ? -1 : 1
+      if (a.date > b.date) return -1
+      if (a.date < b.date) return 1
+      return 0
     })
     .slice(0, limit)
 }

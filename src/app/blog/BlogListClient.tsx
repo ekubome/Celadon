@@ -32,7 +32,7 @@ export default function BlogListClient({
     setCurrentPage(1);
   }, [activeCategory]);
 
-  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
   const paginatedPosts = filteredPosts.slice(
     (currentPage - 1) * POSTS_PER_PAGE,
     currentPage * POSTS_PER_PAGE

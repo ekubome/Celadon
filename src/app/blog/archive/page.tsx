@@ -27,9 +27,7 @@ export default function ArchivePage() {
   const postsByYear: PostsByYear = {};
 
   posts.forEach((post) => {
-    const date = new Date(post.date);
-    const year = date.getFullYear().toString();
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const [year, month] = post.date.split("-");
 
     if (!postsByYear[year]) {
       postsByYear[year] = {};
