@@ -5,10 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search } from "lucide-react";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 const navLinks = [
   { name: "首页", href: "/" },
   { name: "博客", href: "/blog" },
+  { name: "归档", href: "/blog/archive" },
   { name: "关于", href: "/about" },
 ];
 
@@ -47,7 +49,7 @@ export function Navbar() {
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "py-3 bg-white/70 backdrop-blur-xl border-b border-gray-200/50 shadow-sm shadow-gray-200/20"
+            ? "py-3 bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm shadow-gray-200/20 dark:shadow-gray-900/20"
             : "py-5 bg-transparent"
         }`}
       >
@@ -56,7 +58,7 @@ export function Navbar() {
           <Link href="/" className="relative group">
             <span className="text-xl font-medium tracking-tight">
               <span className="text-primary">C</span>
-              <span className="text-gray-800">eladon</span>
+              <span className="text-gray-800 dark:text-gray-100">eladon</span>
             </span>
             <motion.div
               className="absolute -bottom-1 left-0 h-[2px] bg-primary/60 rounded-full"
@@ -77,7 +79,7 @@ export function Navbar() {
                   className={`relative px-4 py-2 text-sm font-medium transition-colors ${
                     isActive
                       ? "text-primary bg-primary/8 rounded-full"
-                      : "text-gray-500 hover:text-gray-800"
+                      : "text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
                   }`}
                 >
                   {link.name}
@@ -87,17 +89,18 @@ export function Navbar() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2">
             <button
               onClick={() => setSearchOpen(true)}
-              className="p-2.5 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
+              className="p-2.5 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-all"
               aria-label="搜索"
             >
               <Search size={18} />
             </button>
+            <ThemeToggle />
             <Link
               href="/about#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-gray-900 rounded-full hover:bg-gray-800 transition-all duration-300 hover:shadow-lg hover:shadow-gray-900/20 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-gray-900 dark:bg-gray-100 dark:text-gray-900 rounded-full hover:bg-gray-800 dark:hover:bg-white transition-all duration-300 hover:shadow-lg hover:shadow-gray-900/20 dark:hover:shadow-gray-100/20 hover:-translate-y-0.5"
             >
               联系我
             </Link>
@@ -107,14 +110,15 @@ export function Navbar() {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={() => setSearchOpen(true)}
-              className="p-2 text-gray-600 hover:text-gray-900 transition-colors"
+              className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
               aria-label="搜索"
             >
               <Search size={20} />
             </button>
+            <ThemeToggle />
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 text-gray-600 hover:text-gray-900 transition-colors"
+              className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -135,7 +139,7 @@ export function Navbar() {
           >
             {/* Backdrop */}
             <div
-              className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm"
               onClick={() => setMobileOpen(false)}
             />
 
@@ -145,7 +149,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="absolute right-0 top-0 h-full w-[280px] bg-white/95 backdrop-blur-xl shadow-2xl"
+              className="absolute right-0 top-0 h-full w-[280px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl"
             >
               <div className="flex flex-col pt-24 px-6">
                 {navLinks.map((link, index) => {
@@ -159,10 +163,10 @@ export function Navbar() {
                     >
                       <Link
                         href={link.href}
-                        className={`block py-3 text-lg font-medium border-b border-gray-100 transition-colors ${
+                        className={`block py-3 text-lg font-medium border-b border-gray-100 dark:border-gray-800 transition-colors ${
                           isActive
                             ? "text-primary"
-                            : "text-gray-600 hover:text-gray-900"
+                            : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
                         }`}
                       >
                         {link.name}
@@ -179,7 +183,7 @@ export function Navbar() {
                 >
                   <Link
                     href="/about#contact"
-                    className="block w-full py-3 text-center text-white bg-gray-900 rounded-full font-medium"
+                    className="block w-full py-3 text-center text-white bg-gray-900 dark:bg-gray-100 dark:text-gray-900 rounded-full font-medium"
                   >
                     联系我
                   </Link>

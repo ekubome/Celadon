@@ -5,6 +5,8 @@ category: "技术"
 tags: ["Next.js", "React", "全栈开发"]
 featured: false
 excerpt: "深入了解 Next.js 15 带来的新特性，包括 Turbopack、Server Actions 增强、部分预渲染等。"
+series: "Next.js 完全指南"
+seriesOrder: 1
 ---
 
 ## Next.js 15 概览

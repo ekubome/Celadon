@@ -27,24 +27,42 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" suppressHydrationWarning>
+      <head>
+        {/* Prevent flash of wrong theme */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const storageKey = 'celadon-theme';
+                const theme = localStorage.getItem(storageKey) || 'system';
+                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const isDark = theme === 'dark' || (theme === 'system' && systemDark);
+                if (isDark) {
+                  document.documentElement.classList.add('dark');
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {/* 全局背景层 */}
         <div className="fixed inset-0 -z-10 overflow-hidden">
-          {/* 纯净白底 */}
-          <div className="absolute inset-0 bg-[#fcfcfc]" />
+          {/* 纯净白底 / 深色底 */}
+          <div className="absolute inset-0 bg-[#fcfcfc] dark:bg-[#0f1419]" />
 
           {/* 微妙的网格纹理 */}
-          <div className="absolute inset-0 bg-grid-small opacity-40" />
+          <div className="absolute inset-0 bg-grid-small opacity-40 dark:opacity-20" />
 
           {/* 主色调光晕 - 右上角 */}
-          <div className="absolute -top-40 -right-40 w-[400px] h-[400px] rounded-full bg-primary/8 blur-[80px]" />
+          <div className="absolute -top-40 -right-40 w-[400px] h-[400px] rounded-full bg-primary/8 dark:bg-primary/5 blur-[80px]" />
 
           {/* 银色光晕 - 左下角 */}
-          <div className="absolute -bottom-40 -left-40 w-[350px] h-[350px] rounded-full bg-gray-300/20 blur-[70px]" />
+          <div className="absolute -bottom-40 -left-40 w-[350px] h-[350px] rounded-full bg-gray-300/20 dark:bg-gray-700/10 blur-[70px]" />
 
           {/* 中央微弱光晕 */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/3 blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/3 dark:bg-primary/5 blur-[100px]" />
         </div>
 
         <Navbar />

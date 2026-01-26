@@ -55,11 +55,11 @@ export default async function TagPage({ params }: PageProps) {
             <span className="text-sm text-primary font-medium tracking-wide uppercase mb-4 block">
               标签
             </span>
-            <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
+            <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-gray-100 mb-6 flex items-center gap-3">
               <Tag className="w-10 h-10 text-primary" />
               {decodedTag}
             </h1>
-            <p className="text-xl text-gray-500">
+            <p className="text-xl text-gray-500 dark:text-gray-400">
               共 {posts.length} 篇文章
             </p>
           </div>

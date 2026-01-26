@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { Tag } from "lucide-react";
 import { getAllPostsMeta, getAllTags } from "@/lib/posts";
+import PageHeader from "@/components/ui/PageHeader";
 
 export const metadata: Metadata = {
   title: "标签 | 博客",
@@ -40,23 +41,17 @@ export default function TagsPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <section className="pt-20 pb-12 px-6">
-        <div className="max-w-4xl mx-auto">
-          <span className="text-sm text-primary font-medium tracking-wide uppercase mb-4 block">
-            标签
-          </span>
-          <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6">
-            标签云
-          </h1>
-          <p className="text-xl text-gray-500 mb-4">
-            按标签浏览所有文章
-          </p>
+      <PageHeader
+        label="标签"
+        title="标签云"
+        description="按标签浏览所有文章"
+        meta={
           <div className="flex items-center gap-2 text-sm text-gray-400">
             <Tag className="w-4 h-4" />
             <span>共 {tags.length} 个标签</span>
           </div>
-        </div>
-      </section>
+        }
+      />
 
       {/* Tags Cloud */}
       <section className="pb-32 px-6">
